@@ -10,6 +10,8 @@ from api.utils import APIException, generate_sitemap
 from api.models import db
 from api.routes import api
 from api.admin import setup_admin
+from flask_jwt_extended import create_access_token, JWTManager, get_jwt_identity, jwt_required
+
 #from models import Person
 
 ENV = os.getenv("FLASK_ENV")
@@ -26,6 +28,10 @@ else:
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 MIGRATE = Migrate(app, db)
 db.init_app(app)
+
+# # Setup the Flask-JWT-Extended extension
+app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_SECRET_KEY')
+jwt = JWTManager(app)
 
 # Allow CORS requests to this API
 CORS(app)
