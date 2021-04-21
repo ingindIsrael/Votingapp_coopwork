@@ -10,26 +10,31 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="text-center mt-5">
-			<Jumbotron fluid className="jumbotron">
+		<div className="mx-auto">
+			<Jumbotron fluid className="jumbotron text-center">
 				<Container>
 					<h1>CoopWork</h1>
-					<p>First time here? Take a minute and register.</p>
 				</Container>
 			</Jumbotron>
-			<Container lg={true}>
+			<Container>
 				<Form>
 					<Form.Group controlId="formBasicEmail">
-						<Form.Control className="input" type="email" placeholder="Cooperativist Name" />
+						<Form.Control
+							className="input border border-dark"
+							type="email"
+							placeholder="Cooperativist Name"
+						/>
 					</Form.Group>
 
 					<Form.Group controlId="formBasicPassword">
-						<Form.Control className="input" type="password" placeholder="Password" />
+						<Form.Control className="input border border-dark" type="password" placeholder="Password" />
 					</Form.Group>
 
-					<Button className="mb-2 login-button rounded-pill btn-dark">Submit Infomation</Button>
+					<Button className="mb-2 border border-dark login-button rounded-pill btn-dark">
+						Submit Infomation
+					</Button>
 					<br />
-					<Button className="login-button btn-dark">Login with Gmail</Button>
+					<Button className="login-button border border-dark rounded-pill btn-dark">Login with Gmail</Button>
 				</Form>
 			</Container>
 		</div>

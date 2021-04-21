@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 
 export const Nav = () => {
 	return (
-		<Navbar bg="dark">
+		<Navbar bg="dark clearfix">
 			<Navbar.Brand href="https://www.google.com/">
 				<i className="fab fa-google" />
 			</Navbar.Brand>
