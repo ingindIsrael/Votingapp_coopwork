@@ -47,6 +47,7 @@ class Vote(db.Model):
     proposalID = db.Column(db.Integer, db.ForeignKey('proposal.id'), primary_key=True)
     userID = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
     eventID = db.Column(db.Integer, db.ForeignKey('event.id'), primary_key=True)
+    
 
     def __repr__(self):
         return '<Vote %r>' % self.id

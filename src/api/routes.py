@@ -23,9 +23,20 @@ def login():
 
 @api.route("/comment", methods=["POST"])
 @jwt_required()
-def comment():
-       
-    return jsonify(access_token=access_token, user=user.serialize())
+def createComment():
+    user_id = get_jwt_identity()
+    body = request.get_json()
+    comment = Comment(commentTXT = body["commentTXT"], commentLINK = body["commentLINK"], userID = user_id)
+    print("**************COMMENT****************", comment)
+    db.session.add(comment)
+    db.session.commit()
+    return f'the user with id number {user_id} made a comment', 200
+
+@api.route("/comments", methods=["GET"])
+def checkComents():
+    all_comment = Comment.query.all()
+    all_comment = list(map(lambda x: x.serialize(), all_comment))
+    return jsonify(all_comment), 200 
 
 @api.route('/deletemycomment/<int:commentID>', methods=['DELETE'])
 #Delete comment with the id = commentID.
@@ -41,22 +52,32 @@ def deleteCOMMENT(commentID):
 @jwt_required()
 def vote():
     user_id = get_jwt_identity()
-    choicePicked = request.get_json()
+    body = request.get_json()
+    single_vote = Vote(eventID = body["eventID"], proposalID = body["proposalID"], userID = user_id)
+    print("**************VOTE****************", single_vote)
+    db.session.add(single_vote)
     db.session.commit()
-    return jsonify(access_token=access_token, user=user.serialize())
+    return f'the user with id number {user_id} has voted', 200
 
-@api.route('/changemyvote/<int:voteID>', methods=['DELETE'])
-#Delete comment with the id = voteID.
-def changeMYvote(voteID):
-    vote = Vote.query.get(voteID)
-    if vote is None:
-        raise APIException('VoteID number wrong try a valid one', status_code=404)
-    db.session.delete(vote)
-    db.session.commit()
-    return f"The vote with id number {voteID} has been change under your request", 200
-# this endpoint should delete the vote if the user id is in the event id and
-# should request that the user send a new vote or redirect it to the voting endpoint
-# example(vote.id = 106, user.id = 78493)
+@api.route("/votes", methods=["GET"])
+def votes():
+    all_people = Vote.query.all()
+    all_people = list(map(lambda x: x.serialize(), all_people))
+    return jsonify(all_people), 200
+
+
+# @api.route('/changemyvote/<int:voteID>', methods=['DELETE'])
+# #Delete comment with the id = voteID.
+# def changeMYvote(voteID):
+#     vote = Vote.query.get(voteID)
+#     if vote is None:
+#         raise APIException('VoteID number wrong try a valid one', status_code=404)
+#     db.session.delete(vote)
+#     db.session.commit()
+#     return f"The vote with id number {voteID} has been change under your request", 200
+# # this endpoint should delete the vote if the user id is in the event id and
+# # should request that the user send a new vote or redirect it to the voting endpoint
+# # example(vote.id = 106, user.id = 78493)
 
 @api.route("/protected", methods=["GET"])
 @jwt_required()
