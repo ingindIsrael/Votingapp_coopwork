@@ -8,6 +8,7 @@ import TabPane from "react-bootstrap/TabPane";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Nav from "react-bootstrap/Nav";
+import { Chat } from "./chat";
 
 export const TabNav = () => {
 	return (
@@ -16,20 +17,53 @@ export const TabNav = () => {
 				<Col sm={3}>
 					<Nav variant="pills" className="flex-column">
 						<Nav.Item>
-							<Nav.Link eventKey="first">Tab 1</Nav.Link>
+							<Nav.Link eventKey="first">Accounts</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
-							<Nav.Link eventKey="second">Tab 2</Nav.Link>
+							<Nav.Link eventKey="second">Bills</Nav.Link>
+						</Nav.Item>
+						<Nav.Item>
+							<Nav.Link eventKey="third">Budgets</Nav.Link>
+						</Nav.Item>
+						<Nav.Item>
+							<Nav.Link eventKey="fourth">Votes</Nav.Link>
+						</Nav.Item>
+						<Nav.Item>
+							<Nav.Link eventKey="fifth">Debate</Nav.Link>
 						</Nav.Item>
 					</Nav>
 				</Col>
 				<Col sm={9}>
 					<Tab.Content>
 						<Tab.Pane eventKey="first">
-							<p>hello</p>
+							<p>
+								<i className="fas fa-dollar-sign" />
+							</p>
+							<p>Accounts</p>
 						</Tab.Pane>
 						<Tab.Pane eventKey="second">
-							<p>how are you</p>
+							<p>
+								<i className="fas fa-file-invoice" />
+							</p>
+							<p>Bills</p>
+						</Tab.Pane>
+						<Tab.Pane eventKey="third">
+							<p>
+								<i className="fas fa-money-check" />
+							</p>
+							<p>Budgets</p>
+						</Tab.Pane>
+						<Tab.Pane eventKey="fourth">
+							<p>
+								<i className="fas fa-sticky-note" />
+							</p>
+							<p>Votes</p>
+						</Tab.Pane>
+						<Tab.Pane eventKey="fifth">
+							<p>
+								<i className="fas fa-comments" />
+							</p>
+							<Chat />
 						</Tab.Pane>
 					</Tab.Content>
 				</Col>
