@@ -10,7 +10,7 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="mx-auto">
+		<div className="form center auto">
 			<Jumbotron fluid className="jumbotron text-center">
 				<Container>
 					<h1>CoopWork</h1>
