@@ -63,7 +63,6 @@ export const TabNav = () => {
 							<p>
 								<i className="fas fa-comments" />
 							</p>
-							<Chat />
 						</Tab.Pane>
 					</Tab.Content>
 				</Col>

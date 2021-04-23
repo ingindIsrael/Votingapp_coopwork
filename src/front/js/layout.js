@@ -11,6 +11,7 @@ import { Nav } from "./component/nav";
 import { Footer } from "./component/footer";
 import { Accounts } from "./pages/account";
 import { TabNav } from "./component/tabNav";
+import { Chat } from "./component/chat.js";
 
 //create your first component
 const Layout = () => {
@@ -31,8 +32,8 @@ const Layout = () => {
 						<Route exact path="/accounts">
 							<Accounts />
 						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
+						<Route exact path="/chat">
+							<Chat />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
