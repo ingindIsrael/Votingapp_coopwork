@@ -6,7 +6,7 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-
+import { CreateUser } from "./pages/createUser.js";
 import { Nav } from "./component/nav";
 import { Footer } from "./component/footer";
 import { Accounts } from "./pages/account";
@@ -34,6 +34,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/chat">
 							<Chat />
+						</Route>
+						<Route exact path="/createUser">
+							<CreateUser />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

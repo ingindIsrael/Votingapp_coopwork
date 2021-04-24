@@ -26,9 +26,9 @@ export const ChatWindow = () => {
 	};
 
 	const btnStyles = {
-		backgroundColor: "#00d8ff",
+		backgroundColor: "grey",
 		border: "none",
-		color: "#336699",
+		color: "white",
 		textTransform: "uppercase",
 		letterSpacing: "0.05em",
 		fontWeight: "bold",

@@ -7,10 +7,8 @@ import Button from "react-bootstrap/Button";
 import "../../styles/home.scss";
 
 export const Home = () => {
-	const { store, actions } = useContext(Context);
-
 	return (
-		<div className="form center auto">
+		<div className="form mx-auto">
 			<Jumbotron fluid className="jumbotron text-center">
 				<Container>
 					<h1>CoopWork</h1>
