@@ -14,6 +14,7 @@ export const Home = () => {
 					<h1>CoopWork</h1>
 				</Container>
 			</Jumbotron>
+
 			<Container>
 				<Form>
 					<Form.Group controlId="formBasicEmail">

@@ -1,0 +1,26 @@
+.tab {
+    color: black;
+    font-size: x-large;
+    padding: 35px;
+
+}
+.tab:hover{
+    
+    color: black;
+    text-decoration: underline;
+
+}
+
+.nav-pills .nav-link.active{
+    color: #fff;
+    background-color: black;
+}
+.tab-pane{
+    font-size: x-large;
+    text-align: center;
+  
+}
+.container{
+    max-width: 50%;
+    
+}
