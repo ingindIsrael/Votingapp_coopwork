@@ -12,6 +12,7 @@ import { Footer } from "./component/footer";
 import { Accounts } from "./pages/account";
 import { TabNav } from "./component/tabNav";
 import { Chat } from "./component/chat.js";
+import { LineChart } from "./component/linechart.js";
 
 //create your first component
 const Layout = () => {
@@ -29,6 +30,9 @@ const Layout = () => {
 						<Route exact path="/">
 							<Home />
 						</Route>
+						{/* <Route exact path="/l">
+							<LineChart />
+						</Route> */}
 						<Route exact path="/accounts">
 							<Accounts />
 						</Route>

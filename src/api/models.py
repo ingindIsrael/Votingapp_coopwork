@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 db = SQLAlchemy()
 
@@ -9,7 +10,8 @@ class User(db.Model):
     fname = db.Column(db.String(80), unique=False, nullable=False)
     lname = db.Column(db.String(80), unique=False, nullable=False)
     workerPosition = db.Column(db.String(80), unique=False, nullable=False)
-    
+    admin = db.Column(db.Boolean(), unique=False, nullable=False)
+    phoneNumber = db.Column(db.String, unique=True, nullable=True)
 
     def __repr__(self):
         return '<User %r>' % self.id
@@ -21,7 +23,8 @@ class User(db.Model):
             "fname": self.fname,
             "lname": self.lname,
             "workerposition": self.workerPosition,
-            
+            "admin": self.admin,
+            "phoneNumber": self.phoneNumber
             # do not serialize the password, its a security breach
         }
 class Comment(db.Model):
@@ -67,10 +70,10 @@ class Proposal(db.Model):
     proposalNAME = db.Column(db.String, primary_key=False)
     active = db.Column(db.Boolean, primary_key=False)
     winner = db.Column(db.Boolean, primary_key=False)
-    eventID = db.Column(db.Integer, db.ForeignKey('event.id'), primary_key=False)
+    eventID = db.Column(db.Integer, db.ForeignKey('event.id'), nullable=False)
 
     def __repr__(self):
-        return '<Proposal %r>' % self.id
+        return '<Proposal %r>' % self.proposalNAME
 
     def serialize(self):
         return {
@@ -84,7 +87,9 @@ class Proposal(db.Model):
 class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     eventNAME = db.Column(db.String, primary_key=False)
-    
+    eventDATE = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    proposalNAME = db.relationship("Proposal", backref="event", lazy=True)
+
     def __repr__(self):
         return '<Event %r>' % self.id
 
@@ -92,5 +97,6 @@ class Event(db.Model):
         return {
             "id": self.id,
             "eventNAME": self.proposalNAME,  
+            "eventDATE": self.eventDATE
             # do not serialize the password, its a security breach
         }
