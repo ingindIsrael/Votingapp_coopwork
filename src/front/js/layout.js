@@ -10,9 +10,8 @@ import { CreateUser } from "./pages/createUser.js";
 import { Nav } from "./component/nav";
 import { Footer } from "./component/footer";
 import { Accounts } from "./pages/account";
-import { TabNav } from "./component/tabNav";
+
 import { Chat } from "./component/chat.js";
-import { LineChart } from "./component/linechart.js";
 
 //create your first component
 const Layout = () => {

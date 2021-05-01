@@ -4,10 +4,9 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { LineChart } from "../component/linechart";
-import { DoughnutChart } from "../component/linechart";
+
 import { useHistory } from "react-router-dom";
-import { Line } from "react-chartjs-2";
+
 import "../../styles/home.scss";
 
 export const Home = () => {
