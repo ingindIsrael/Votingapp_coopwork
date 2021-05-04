@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
@@ -14,8 +14,13 @@ import BillsChart from "./billsChart";
 import PieChart from "./pieChart";
 import VerticalBar from "./barChart";
 import LineChart from "./line";
+import Button from "react-bootstrap/Button";
+import Collapse from "react-bootstrap/Collapse";
+import Fade from "react-bootstrap/Fade";
 
 export const TabNav = () => {
+	const [open, setOpen] = useState(false);
+
 	return (
 		<Tab.Container id="left-tabs-example" defaultActiveKey="first">
 			<Row>
@@ -51,27 +56,78 @@ export const TabNav = () => {
 				<Col sm={9}>
 					<Tab.Content>
 						<Tab.Pane eventKey="first">
-							<h1>Accounts</h1>
-							<p>
-								<i className="fas fa-dollar-sign" />
-							</p>
-							<LineChart />
+							<>
+								<Button
+									onClick={() => setOpen(!open)}
+									aria-controls="example-fade-text"
+									aria-expanded={open}
+									className="border border-dark rounded-pill btn-dark button">
+									Accounts
+								</Button>
+								<p>
+									<i className="fas fa-dollar-sign" />
+								</p>
+								<Fade in={open}>
+									<div id="example-fade-text">
+										<LineChart />
+									</div>
+								</Fade>
+							</>
 						</Tab.Pane>
 						<Tab.Pane eventKey="second">
-							<h1>Bills</h1>
-							<BillsChart />
+							<>
+								<Button
+									onClick={() => setOpen(!open)}
+									aria-controls="example-fade-text"
+									aria-expanded={open}
+									className="border border-dark rounded-pill btn-dark button">
+									Bills
+								</Button>
+								<p>
+									<i className="fas fa-file-invoice-dollar" />
+								</p>
+								<Fade in={open}>
+									<div id="example-fade-text">
+										<BillsChart />
+									</div>
+								</Fade>
+							</>
 						</Tab.Pane>
 						<Tab.Pane eventKey="third">
-							<h1>Budgets</h1>
-							<p>
-								<i className="fas fa-money-check" />
-							</p>
-							<VerticalBar />
+							<>
+								<Button
+									onClick={() => setOpen(!open)}
+									aria-controls="example-fade-text"
+									aria-expanded={open}
+									className="border border-dark rounded-pill btn-dark button">
+									Budgets
+								</Button>
+								<p>
+									<i className="fas fa-money-check" />
+								</p>
+								<Fade in={open}>
+									<div id="example-fade-text">
+										<VerticalBar />
+									</div>
+								</Fade>
+							</>
 						</Tab.Pane>
 						<Tab.Pane eventKey="fourth">
-							<div className="container">
-								<p>Follow the results of our workplace democracy in real time.</p>
-							</div>
+							<>
+								<Button
+									onClick={() => setOpen(!open)}
+									aria-controls="example-collapse-text"
+									aria-expanded={open}
+									className="border border-dark rounded-pill btn-dark button">
+									About
+								</Button>
+								<Collapse in={open}>
+									<div id="example-collapse-text" className="small-container">
+										The chart below displays the results of our workplace democracy in real time,
+										allowing you to always be to up to date.
+									</div>
+								</Collapse>
+							</>
 							<PieChart />
 						</Tab.Pane>
 						<Tab.Pane eventKey="fifth">
@@ -85,7 +141,7 @@ export const TabNav = () => {
 									obtain a loan for launching new products
 								</p>
 							</div>
-							<button className="border border-dark rounded-pill btn-dark">Click Here</button>
+							<Button className="border border-dark rounded-pill btn-dark button">Join Chat</Button>
 						</Tab.Pane>
 					</Tab.Content>
 				</Col>

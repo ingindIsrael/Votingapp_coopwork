@@ -10,7 +10,7 @@ import { CreateUser } from "./pages/createUser.js";
 import { Nav } from "./component/nav";
 import { Footer } from "./component/footer";
 import { Accounts } from "./pages/account";
-
+import { CreateEvent } from "./pages/createEvent.js";
 import { Chat } from "./component/chat.js";
 
 //create your first component
@@ -40,6 +40,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/createUser">
 							<CreateUser />
+						</Route>
+						<Route exact path="/createEvent">
+							<CreateEvent />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
