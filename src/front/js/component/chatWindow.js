@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { ChatMessageHistory } from "./chatHistory";
+import { Context } from "../store/appContext";
 
 export const ChatWindow = () => {
 	const [messages, setMessages] = useState([{ message: "Hi Josh" }, { message: "How are you?" }]);
 	const [inputText, setInputText] = useState("");
+	const { store, actions } = useContext(Context);
+
+	useEffect(() => {
+		actions.allcomments();
+	}, []);
 
 	const handleSubmit = e => {
 		e.preventDefault();
+		actions.comment(inputText);
 		const nextMessages = messages.concat([{ message: inputText }]);
 		setMessages(nextMessages);
 		setInputText("");
@@ -37,7 +44,7 @@ export const ChatWindow = () => {
 
 	return (
 		<div style={windowStyles}>
-			<ChatMessageHistory messages={messages} />
+			<ChatMessageHistory messages={store.comments} />
 			<form style={formStyles} onSubmit={handleSubmit}>
 				<input style={inputStyles} type="text" onChange={e => setInputText(e.target.value)} value={inputText} />
 				<button style={btnStyles}>Send</button>

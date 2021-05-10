@@ -5,10 +5,12 @@ export const ChatMessage = props => {
 	return (
 		<p style={{ marginBottom: 0 }}>
 			{props.message}
+
 			<br />
 		</p>
 	);
 };
 ChatMessage.propTypes = {
 	message: PropTypes.string
+	// key: PropTypes.int
 };

@@ -31,7 +31,7 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     userID = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     commentTXT = db.Column(db.String(80), unique=False, nullable=False)
-    commentLINK = db.Column(db.String(80), unique=False, nullable=False)
+    
 
     def __repr__(self):
         return '<Comment %r>' % self.id
@@ -41,7 +41,7 @@ class Comment(db.Model):
             "id": self.id,
             "userID": self.userID,
             "commentTXT": self.commentTXT,
-            "commentLINK": self.commentLINK,
+            
                         
             # do not serialize the password, its a security breach
         }

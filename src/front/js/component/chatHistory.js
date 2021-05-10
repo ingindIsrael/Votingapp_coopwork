@@ -3,6 +3,7 @@ import { ChatMessage } from "./chatMessage.js";
 import PropTypes from "prop-types";
 
 export const ChatMessageHistory = props => {
+	console.log(props);
 	var createMessage = function(message, index) {
 		var liStyles = {
 			backgroundColor: index % 2 == 1 ? "#ddd" : "#efefef",
@@ -11,8 +12,8 @@ export const ChatMessageHistory = props => {
 		};
 
 		return (
-			<li style={liStyles}>
-				<ChatMessage message={message.message} />
+			<li style={liStyles} key={message.id}>
+				<ChatMessage message={message.commentTXT} />
 			</li>
 		);
 	};

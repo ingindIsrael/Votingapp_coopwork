@@ -12,7 +12,7 @@ import { Footer } from "./component/footer";
 import { Accounts } from "./pages/account";
 import { TabNav } from "./component/tabNav";
 import { Chat } from "./component/chat.js";
-import { LineChart } from "./component/linechart.js";
+import { LineChart } from "./component/line.js";
 
 //create your first component
 const Layout = () => {

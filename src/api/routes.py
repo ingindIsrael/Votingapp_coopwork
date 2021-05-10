@@ -24,19 +24,21 @@ def login():
     userID = user.id
     access_token = create_access_token(identity=userID)
     print("*******************", type(access_token), access_token  )
-    return jsonify(access_token=access_token.decode("utf-8") , user=user.serialize())
+    return jsonify(access_token=access_token.decode("utf-8") , user=user.serialize()), 200
     
 @api.route("/comment", methods=["POST"])
 @jwt_required()
 def createComment():
     user_id = get_jwt_identity()
+    
     body = request.get_json()
-    comment = Comment(commentTXT = body["commentTXT"], commentLINK = body["commentLINK"], userID = user_id)
-    print("**************COMMENT****************", comment)
+    
+    comment = Comment(commentTXT = body, userID = user_id)
+    
     db.session.add(comment)
     db.session.commit()
-    return f'the user with id number {user_id} made a comment', 200
-
+    return jsonify(comment.serialize()), 200
+    # {"message": f'the user with id number {user_id} made a comment'}
 @api.route("/comments", methods=["GET"])
 def checkComents():
     all_comment = Comment.query.all()
