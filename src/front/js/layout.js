@@ -10,9 +10,10 @@ import { CreateUser } from "./pages/createUser.js";
 import { Nav } from "./component/nav";
 import { Footer } from "./component/footer";
 import { Accounts } from "./pages/account";
-import { TabNav } from "./component/tabNav";
+import { CreateEvent } from "./pages/createEvent.js";
 import { Chat } from "./component/chat.js";
 import { LineChart } from "./component/line.js";
+import { Voting } from "./pages/voting";
 
 //create your first component
 const Layout = () => {
@@ -41,6 +42,12 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/createUser">
 							<CreateUser />
+						</Route>
+						<Route exact path="/createEvent">
+							<CreateEvent />
+						</Route>
+						<Route exact path="/voting">
+							<Voting />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

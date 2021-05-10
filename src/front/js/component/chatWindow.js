@@ -21,7 +21,8 @@ export const ChatWindow = () => {
 
 	const windowStyles = {
 		maxWidth: "40em",
-		margin: "1rem auto"
+		margin: "1rem auto",
+		backgroundColor: "rgba(255, 99, 132, 0.5)"
 	};
 
 	const formStyles = {
