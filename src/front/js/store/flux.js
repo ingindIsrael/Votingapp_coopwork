@@ -55,6 +55,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ comments: data });
 					})
 					.catch(error => console.log(error));
+			},
+			createuser: newUser => {
+				const store = getStore();
+				console.log(store);
+				fetch(`${process.env.BACKEND_URL}/api/createuser`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${store.token}`
+					},
+					body: JSON.stringify(newUser)
+				})
+					.then(response => response.json())
+					.then(data => {
+						console.log(data);
+						// setStore({ comments: store.comments.concat(data) });
+					})
+					.catch(error => console.log(error));
+			},
+			createevent: newEvent => {
+				const store = getStore();
+				console.log(store);
+				fetch(`${process.env.BACKEND_URL}/api/createevent`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${store.token}`
+					},
+					body: JSON.stringify(newEvent)
+				})
+					.then(response => response.json())
+					.then(data => {
+						console.log(data);
+						// setStore({ comments: store.comments.concat(data) });
+					})
+					.catch(error => console.log(error));
 			}
 		}
 	};

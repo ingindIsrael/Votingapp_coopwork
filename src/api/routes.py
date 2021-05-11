@@ -106,7 +106,7 @@ def get_All_Users():
 
     return jsonify(all_users), 200
 
-@api.route("/registerauser", methods=["POST"])
+@api.route("/createuser", methods=["POST"])
 @jwt_required()
 def registerAUser():
     current_user = get_jwt_identity()
@@ -120,10 +120,11 @@ def registerAUser():
         if body is None:
                 raise APIException("You need to specify the request body as a json object", status_code=400)
         email = body['email']
-        emailExist = User.query.filter_by(email = email)
+        emailExist = User.query.filter_by(email = email).first()
+       
         if emailExist is not None:
             raise APIException("This email is already register, please try a different one", status_code=400)
-        newUser = User(id=body['id'], email=body['email'], password=body['password'], fname=body['fname'], lname=body['lname'], workerPosition=body['workerPosition'], admin=body['admin'])
+        newUser = User(email=body['email'], password=body['password'], fname=body['fname'], lname=body['lname'], workerPosition=body['workerPosition'], admin=body['admin'], phoneNumber=body['phone'])
         db.session.add(newUser)
         db.session.commit()
         userID = newUser.id
@@ -186,7 +187,7 @@ def sendSMS():
     succ = f"Your message was sent to the rest of the {len(all_users) - len(no_phone)} user(s)"
     return jsonify({"errormsg": error, "succmsg": succ}, 200)
 
-@api.route("/registerevent", methods=["POST"])
+@api.route("/createevent", methods=["POST"])
 @jwt_required()
 def registerEvent():
     current_user = get_jwt_identity()
@@ -195,23 +196,26 @@ def registerEvent():
     if userA is False:
         raise APIException("You need administrative power to register an event", status_code=400)
     if user1.admin is True:
-        event = Event.query.all() 
-        all_events = list(map(lambda x: x.serialize(), event))
-        last_event = all_events[len(all_events) - 1]
-        next_eventID = last_event["id"] + 1
+             
         body = request.get_json()
 
         if body is None:
                 raise APIException("You need to specify the request body as a json object", status_code=400)
        
-        newEvent = Event(eventNAME=body[0]['eventNAME'], eventDATE=body[0]['eventDATE'])
-        newProposal1 = Proposal(proposalNAME=body[1]["proposalNAME"], active=body[1]["active"], winner=body[1]["winner"], eventID=next_eventID)
-        newProposal2 = Proposal(proposalNAME=body[2]["proposalNAME"], active=body[2]["active"], winner=body[2]["winner"], eventID=next_eventID)
-        newProposal3 = Proposal(proposalNAME=body[3]["proposalNAME"], active=body[3]["active"], winner=body[3]["winner"], eventID=next_eventID)
+        newEvent = Event(eventNAME=body['eventNAME'], eventDATE=body['eventDATE'])
         db.session.add(newEvent)
-        db.session.add(newProposal1)
-        db.session.add(newProposal2)
-        db.session.add(newProposal3)
+        db.session.commit()
+
+        listProposal = body["listPROPOSAL"]
+        
+        def addProposal(proposalTitle):
+            newProposal1 = Proposal(proposalNAME = proposalTitle, active=True, winner=False, eventID=newEvent.id)
+            db.session.add(newProposal1)
+        list(map(lambda x: addProposal(x), listProposal))
+        
+        
+        
+        
         db.session.commit()
         
-    return f'the event {newEvent.eventNAME} was created with proposals {newProposal1.proposalNAME} now users can vote for one of this', 200
+    return f'the event was created with proposals now users can vote for one of this', 200
