@@ -7,7 +7,7 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { CreateUser } from "./pages/createUser.js";
-import { Nav } from "./component/nav";
+import { NewNav } from "./component/nav";
 import { Footer } from "./component/footer";
 import { Accounts } from "./pages/account";
 import { CreateEvent } from "./pages/createEvent.js";
@@ -25,7 +25,7 @@ const Layout = () => {
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Nav />
+					<NewNav />
 					{/* <TabNav /> */}
 					<Switch>
 						<Route exact path="/">

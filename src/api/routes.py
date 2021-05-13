@@ -12,6 +12,28 @@ from twilio.rest import Client
 
 api = Blueprint('api', __name__)
 
+def get_All_Events():
+    events = Event.query.filter_by(active = True) 
+    event_list = []
+    proposal_list = []
+    def vote_injection(p):
+        proposal = p.serialize()
+        votes = Vote.query.filter_by(proposalID = p.id)
+        if votes is not None:
+            votes = list(map(lambda x: x.serialize(), votes))
+            proposal["votes"] = votes
+            proposal_list.append(proposal)
+
+    def make_list(e):
+        event = e.serialize()
+        proposals = Proposal.query.filter_by(eventID = e.id) 
+        proposals = list(map(lambda x: vote_injection(x), proposals))
+        proposals = proposal_list
+        event["proposal"] = proposals
+        event_list.append(event) 
+    all_events = list(map( lambda x: make_list(x), events))
+    return event_list
+
 @api.route("/login", methods=["POST"])
 def login():
     email = request.json.get("email", None)
@@ -60,17 +82,17 @@ def deleteCOMMENT(commentID):
 def vote():
     user_id = get_jwt_identity()
     body = request.get_json()
-    single_vote = Vote(eventID = body["eventID"], proposalID = body["proposalID"], userID = user_id)
+    single_vote = Vote(proposalID = body["proposalID"], userID = user_id)
     print("**************VOTE****************", single_vote)
     db.session.add(single_vote)
     db.session.commit()
-    return f'the user with id number {user_id} has voted', 200
+    return jsonify(get_All_Events()), 200
 
-@api.route("/votes", methods=["GET"])
-def votes():
-    all_people = Vote.query.all()
-    all_people = list(map(lambda x: x.serialize(), all_people))
-    return jsonify(all_people), 200
+# @api.route("/votes", methods=["GET"])
+# def votes():
+#     all_people = Vote.query.all()
+#     all_people = list(map(lambda x: x.serialize(), all_people))
+#     return jsonify(all_people), 200
 
 
 # @api.route('/changemyvote/<int:voteID>', methods=['DELETE'])
@@ -202,20 +224,27 @@ def registerEvent():
         if body is None:
                 raise APIException("You need to specify the request body as a json object", status_code=400)
        
-        newEvent = Event(eventNAME=body['eventNAME'], eventDATE=body['eventDATE'])
+        newEvent = Event(eventNAME=body['eventNAME'], eventDATE=body['eventDATE'], active=True)
         db.session.add(newEvent)
         db.session.commit()
 
         listProposal = body["listPROPOSAL"]
         
         def addProposal(proposalTitle):
-            newProposal1 = Proposal(proposalNAME = proposalTitle, active=True, winner=False, eventID=newEvent.id)
+            newProposal1 = Proposal(proposalNAME = proposalTitle, winner=False, eventID=newEvent.id)
             db.session.add(newProposal1)
         list(map(lambda x: addProposal(x), listProposal))
         
-        
-        
-        
         db.session.commit()
         
-    return f'the event was created with proposals now users can vote for one of this', 200
+
+        return jsonify(get_All_Events()), 200
+    
+    
+@api.route('/events', methods=['GET'])
+def get_Events():
+
+    return jsonify(get_All_Events()), 200
+
+    
+    

@@ -47,9 +47,9 @@ class Comment(db.Model):
         }
 class Vote(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    proposalID = db.Column(db.Integer, db.ForeignKey('proposal.id'), primary_key=True)
-    userID = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
-    eventID = db.Column(db.Integer, db.ForeignKey('event.id'), primary_key=True)
+    proposalID = db.Column(db.Integer, db.ForeignKey('proposal.id'), nullable=False)
+    userID = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    
     
 
     def __repr__(self):
@@ -59,8 +59,8 @@ class Vote(db.Model):
         return {
             "id": self.id,
             "proposalID": self.proposalID,
-            "userID": self.userID,
-            "eventID": self.eventID
+            "userID": self.userID
+            
            
                         
             # do not serialize the password, its a security breach
@@ -68,9 +68,9 @@ class Vote(db.Model):
 class Proposal(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     proposalNAME = db.Column(db.String, primary_key=False)
-    active = db.Column(db.Boolean, primary_key=False)
     winner = db.Column(db.Boolean, primary_key=False)
     eventID = db.Column(db.Integer, db.ForeignKey('event.id'), nullable=False)
+    votes = db.relationship("Vote", backref="proposal", lazy=True)
 
     def __repr__(self):
         return '<Proposal %r>' % self.proposalNAME
@@ -80,14 +80,15 @@ class Proposal(db.Model):
             "id": self.id,
             "proposalNAME": self.proposalNAME,
             "winner": self.winner,
-            "active": self.active,
-            "eventID": self.eventID,         
+            "eventID": self.eventID,
+                     
             # do not serialize the password, its a security breach
         }
 class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     eventNAME = db.Column(db.String, primary_key=False)
     eventDATE = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    active = db.Column(db.Boolean, primary_key=False)
     proposalNAME = db.relationship("Proposal", backref="event", lazy=True)
 
     def __repr__(self):
@@ -96,7 +97,8 @@ class Event(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "eventNAME": self.proposalNAME,  
-            "eventDATE": self.eventDATE
+            "eventNAME": self.eventNAME,  
+            "eventDATE": self.eventDATE,
+            "active": self.active
             # do not serialize the password, its a security breach
         }

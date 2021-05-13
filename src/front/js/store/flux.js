@@ -2,7 +2,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			token: localStorage.getItem("token"),
-			comments: []
+			comments: [],
+			events: []
 		},
 		actions: {
 			login: (userCredentials, history) => {
@@ -88,7 +89,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(data => {
 						console.log(data);
-						// setStore({ comments: store.comments.concat(data) });
+						setStore({ events: data });
+					})
+					.catch(error => console.log(error));
+			},
+			all_events: () => {
+				const store = getStore();
+				fetch(`${process.env.BACKEND_URL}/api/events`, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${store.token}`
+					}
+				})
+					.then(response => response.json())
+					.then(data => {
+						console.log(data);
+						setStore({ events: data });
+					})
+					.catch(error => console.log(error));
+			},
+			vote: vote => {
+				const store = getStore();
+				console.log(store);
+				fetch(`${process.env.BACKEND_URL}/api/vote`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${store.token}`
+					},
+					body: JSON.stringify(vote)
+				})
+					.then(response => response.json())
+					.then(data => {
+						console.log(data);
+						// setStore({ events: store.events.concat(data) });
 					})
 					.catch(error => console.log(error));
 			}

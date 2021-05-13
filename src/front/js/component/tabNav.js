@@ -17,9 +17,14 @@ import LineChart from "./line";
 import Button from "react-bootstrap/Button";
 import Collapse from "react-bootstrap/Collapse";
 import Fade from "react-bootstrap/Fade";
+import { VoteButons } from "./votebuttons";
 
 export const TabNav = () => {
-	const [open, setOpen] = useState(false);
+	const [voteTab, setVoteTab] = useState(false);
+	const [accountsTab, setAccountsTab] = useState(true);
+	const [billsTab, setBillsTab] = useState(false);
+	const [budgetsTab, setBudgetsTab] = useState(false);
+	const [debateTab, setDebateTab] = useState(false);
 
 	return (
 		<Tab.Container id="left-tabs-example" defaultActiveKey="first">
@@ -27,27 +32,72 @@ export const TabNav = () => {
 				<Col sm={3}>
 					<Nav variant="pills" className="flex-column">
 						<Nav.Item>
-							<Nav.Link className="tab" eventKey="first">
+							<Nav.Link
+								className="tab"
+								eventKey="first"
+								onClick={() => {
+									setVoteTab(false);
+									setBillsTab(false);
+									setBudgetsTab(false);
+									setAccountsTab(true);
+									setDebateTab(false);
+								}}>
 								Accounts
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
-							<Nav.Link className="tab" eventKey="second">
+							<Nav.Link
+								className="tab"
+								eventKey="second"
+								onClick={() => {
+									setVoteTab(false);
+									setBillsTab(true);
+									setBudgetsTab(false);
+									setAccountsTab(false);
+									setDebateTab(false);
+								}}>
 								Bills
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
-							<Nav.Link className="tab" eventKey="third">
+							<Nav.Link
+								className="tab"
+								eventKey="third"
+								onClick={() => {
+									setVoteTab(false);
+									setBillsTab(false);
+									setBudgetsTab(true);
+									setAccountsTab(false);
+									setDebateTab(false);
+								}}>
 								Budgets
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
-							<Nav.Link className="tab" eventKey="fourth">
+							<Nav.Link
+								className="tab"
+								eventKey="fourth"
+								onClick={() => {
+									setVoteTab(true);
+									setBillsTab(false);
+									setBudgetsTab(false);
+									setAccountsTab(false);
+									setDebateTab(false);
+								}}>
 								Votes
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
-							<Nav.Link className="tab" eventKey="fifth">
+							<Nav.Link
+								className="tab"
+								eventKey="fifth"
+								onClick={() => {
+									setVoteTab(false);
+									setBillsTab(false);
+									setBudgetsTab(false);
+									setAccountsTab(false);
+									setDebateTab(true);
+								}}>
 								Debate
 							</Nav.Link>
 						</Nav.Item>
@@ -57,78 +107,60 @@ export const TabNav = () => {
 					<Tab.Content>
 						<Tab.Pane eventKey="first">
 							<>
-								<Button
-									onClick={() => setOpen(!open)}
-									aria-controls="example-fade-text"
-									aria-expanded={open}
-									className="border border-dark rounded-pill btn-dark button">
-									Accounts
-								</Button>
 								<p>
 									<i className="fas fa-dollar-sign" />
 								</p>
-								<Fade in={open}>
-									<div id="example-fade-text">
-										<LineChart />
-									</div>
-								</Fade>
+								{accountsTab ? (
+									<>
+										<LineChart />{" "}
+									</>
+								) : (
+									""
+								)}
 							</>
 						</Tab.Pane>
 						<Tab.Pane eventKey="second">
 							<>
-								<Button
-									onClick={() => setOpen(!open)}
-									aria-controls="example-fade-text"
-									aria-expanded={open}
-									className="border border-dark rounded-pill btn-dark button">
-									Bills
-								</Button>
 								<p>
 									<i className="fas fa-file-invoice-dollar" />
 								</p>
-								<Fade in={open}>
-									<div id="example-fade-text">
-										<BillsChart />
-									</div>
-								</Fade>
+								{billsTab ? (
+									<>
+										<BillsChart />{" "}
+									</>
+								) : (
+									""
+								)}
 							</>
 						</Tab.Pane>
 						<Tab.Pane eventKey="third">
 							<>
-								<Button
-									onClick={() => setOpen(!open)}
-									aria-controls="example-fade-text"
-									aria-expanded={open}
-									className="border border-dark rounded-pill btn-dark button">
-									Budgets
-								</Button>
 								<p>
 									<i className="fas fa-money-check" />
 								</p>
-								<Fade in={open}>
-									<div id="example-fade-text">
-										<VerticalBar />
-									</div>
-								</Fade>
 							</>
+							{budgetsTab ? (
+								<>
+									<VerticalBar />{" "}
+								</>
+							) : (
+								""
+							)}
 						</Tab.Pane>
 						<Tab.Pane eventKey="fourth">
 							<>
-								<Button
-									onClick={() => setOpen(!open)}
-									aria-controls="example-collapse-text"
-									aria-expanded={open}
-									className="border border-dark rounded-pill btn-dark button">
-									About
-								</Button>
-								<Collapse in={open}>
-									<div id="example-collapse-text" className="small-container">
-										The chart below displays the results of our workplace democracy in real time,
-										allowing you to always be to up to date.
-									</div>
-								</Collapse>
+								<div id="example-collapse-text" className="small-container">
+									The chart below displays the results of our workplace democracy in real time,
+									allowing you to always be to up to date.
+								</div>
 							</>
-							<PieChart />
+							{voteTab ? (
+								<>
+									<VoteButons />{" "}
+								</>
+							) : (
+								""
+							)}
 						</Tab.Pane>
 						<Tab.Pane eventKey="fifth">
 							<p>

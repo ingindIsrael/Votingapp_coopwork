@@ -5,3 +5,6 @@ psql -U gitpod -c 'CREATE DATABASE example;' &&
 psql -U gitpod -c 'CREATE EXTENSION unaccent;' -d example &&
 pipenv run migrate &&
 pipenv run upgrade
+
+
+
