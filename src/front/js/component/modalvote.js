@@ -12,7 +12,7 @@ export const ModalVotes = props => {
 			</Modal.Header>
 			<Modal.Body>
 				Are you completely sure you want to vote for? {props.proposal} If so, click on yes and your vote will be
-				final. Take into consideration that after voting you cannot alter your decision
+				final. Please take into consideration that after voting you cannot alter your decision.
 			</Modal.Body>
 			<Modal.Footer>
 				<Button variant="secondary" onClick={props.handleClose}>

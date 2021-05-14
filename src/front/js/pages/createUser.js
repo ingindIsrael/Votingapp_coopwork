@@ -31,7 +31,7 @@ export const CreateUser = () => {
 							className="input border border-dark"
 							onChange={e => setNewUser({ ...newUser, email: e.target.value })}
 							type="email"
-							placeholder="Worker email"
+							placeholder="Worker Email"
 						/>
 					</Form.Group>
 
@@ -48,7 +48,7 @@ export const CreateUser = () => {
 							className="input border border-dark"
 							onChange={e => setNewUser({ ...newUser, lname: e.target.value })}
 							type="name"
-							placeholder="worker Last Name"
+							placeholder="Worker Last Name"
 						/>
 					</Form.Group>
 
@@ -57,7 +57,7 @@ export const CreateUser = () => {
 							className="input border border-dark"
 							onChange={e => setNewUser({ ...newUser, phone: e.target.value })}
 							type="phone"
-							placeholder="worker phone"
+							placeholder="Worker Phone"
 						/>
 					</Form.Group>
 					<Form.Group controlId="workerPosition">

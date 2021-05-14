@@ -33,7 +33,7 @@ export const TabNav = () => {
 					<Nav variant="pills" className="flex-column">
 						<Nav.Item>
 							<Nav.Link
-								className="tab"
+								className="tab rounded-0"
 								eventKey="first"
 								onClick={() => {
 									setVoteTab(false);
@@ -47,7 +47,7 @@ export const TabNav = () => {
 						</Nav.Item>
 						<Nav.Item>
 							<Nav.Link
-								className="tab"
+								className="tab rounded-0"
 								eventKey="second"
 								onClick={() => {
 									setVoteTab(false);
@@ -61,7 +61,7 @@ export const TabNav = () => {
 						</Nav.Item>
 						<Nav.Item>
 							<Nav.Link
-								className="tab"
+								className="tab rounded-0"
 								eventKey="third"
 								onClick={() => {
 									setVoteTab(false);
@@ -75,7 +75,7 @@ export const TabNav = () => {
 						</Nav.Item>
 						<Nav.Item>
 							<Nav.Link
-								className="tab"
+								className="tab rounded-0"
 								eventKey="fourth"
 								onClick={() => {
 									setVoteTab(true);
@@ -89,7 +89,7 @@ export const TabNav = () => {
 						</Nav.Item>
 						<Nav.Item>
 							<Nav.Link
-								className="tab"
+								className="tab rounded-0"
 								eventKey="fifth"
 								onClick={() => {
 									setVoteTab(false);
@@ -166,7 +166,7 @@ export const TabNav = () => {
 							<p>
 								<i className="fas fa-comments" />
 							</p>
-							<h1>Debate</h1>
+
 							<div className="container">
 								<p>
 									Be apart of our workplace democracy and join the debate about whether or not to

@@ -21,7 +21,7 @@ export const VoteButons = () => {
 				const PayLoad = { eventID: item.id, proposalID: IDpicked };
 
 				return (
-					<div key={key}>
+					<div className="container mx-auto" key={key}>
 						<EventCard item={item} handleShow={handleShow} picked={setpicked} ID={setIDpicked} i={key} />
 
 						<Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
