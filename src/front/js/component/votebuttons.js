@@ -26,7 +26,7 @@ export const VoteButons = () => {
 
 						<Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
 							<Modal.Header closeButton>
-								<Modal.Title>Modal title</Modal.Title>
+								<Modal.Title>Final Vote</Modal.Title>
 							</Modal.Header>
 							<Modal.Body>
 								Are you completely sure you want to vote for? <strong>{picked}</strong> If so, click on
@@ -42,7 +42,7 @@ export const VoteButons = () => {
 									onClick={() => {
 										actions.vote(PayLoad);
 										handleClose();
-										refreshPage();
+										// refreshPage();
 									}}>
 									Yes
 								</Button>

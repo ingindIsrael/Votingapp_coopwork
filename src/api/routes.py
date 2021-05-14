@@ -200,12 +200,15 @@ def sendSMS():
     for x in all_users:
         if x["phoneNumber"] is None:
             no_phone.append(" "+ x["fname"] +" "+ x["lname"])
+        elif x["phoneNumber"] is not None:
+            sendTXT(x["phoneNumber"])
     print(no_phone)
     
     if len(no_phone) > 0:
         joined_string = ",".join(no_phone)
         error = f'the following user(s) {joined_string} does not have any phone number register'
-    # sendTXT(x["phoneNumber"])
+    print(x["phoneNumber"])
+    
     succ = f"Your message was sent to the rest of the {len(all_users) - len(no_phone)} user(s)"
     return jsonify({"errormsg": error, "succmsg": succ}, 200)
 

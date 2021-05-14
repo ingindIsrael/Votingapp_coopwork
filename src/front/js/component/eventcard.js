@@ -8,6 +8,7 @@ import { PieChart } from "./pieChart";
 
 export const EventCard = ({ item, handleShow, picked, ID, i }) => {
 	console.log(item);
+	const { store, actions } = useContext(Context);
 	return (
 		<Card style={{ width: "18rem" }}>
 			<Card.Header>{item.eventNAME}</Card.Header>
@@ -28,6 +29,10 @@ export const EventCard = ({ item, handleShow, picked, ID, i }) => {
 					</ListGroupItem>
 				))}
 			</ListGroup>
+			<Card.Footer>
+				<Card.Subtitle className="mb-2 text-muted">Send bulk reminder to vote</Card.Subtitle>
+				<Button onClick={() => actions.reminder()}>Send</Button>
+			</Card.Footer>
 		</Card>
 	);
 };

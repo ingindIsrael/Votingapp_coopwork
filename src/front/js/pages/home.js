@@ -5,31 +5,46 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { LineChart } from "../component/line";
-// import { DoughnutChart } from "../component/linechart";
-
-import { useHistory } from "react-router-dom";
-
+import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
 import "../../styles/home.scss";
 
-export const Home = () => {
-	const history = useHistory();
+export const Home = props => {
 	const { store, actions } = useContext(Context);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const Handlerlogin = e => {
 		e.preventDefault();
-		actions.login({ email: email, password: password }, history);
+
+		fetch(`${process.env.BACKEND_URL}/api/login`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({ email: email, password: password })
+		})
+			.then(response => response.json())
+			.then(data => {
+				console.log(data);
+
+				sessionStorage.clear();
+				sessionStorage.setItem("token", data.access_token);
+				sessionStorage.setItem("admin", data.user.admin);
+				props.setLogin(true);
+			})
+			.catch(error => console.log(error));
 	};
+	console.log("este es el admin ", sessionStorage.getItem("admin"));
 	return (
 		<div className="form mx-auto">
-			<Jumbotron fluid className="jumbotron text-center">
+			{props.login ? <Redirect to="/accounts" /> : ""}
+			<Jumbotron fluid className="jumbotron text-center mt-5">
 				<Container>
 					<h1>CoopWork</h1>
 				</Container>
 			</Jumbotron>
 
 			<Container>
-				{/* <DoughnutChart /> */}
 				<Form>
 					<Form.Group controlId="formBasicEmail">
 						<Form.Control
@@ -60,4 +75,8 @@ export const Home = () => {
 			</Container>
 		</div>
 	);
+};
+Home.propTypes = {
+	login: PropTypes.bool,
+	setLogin: PropTypes.func
 };
