@@ -36,9 +36,9 @@ export const Home = props => {
 	};
 	console.log("este es el admin ", sessionStorage.getItem("admin"));
 	return (
-		<div className="form mx-auto">
+		<div className="inputs mx-auto">
 			{props.login ? <Redirect to="/accounts" /> : ""}
-			<Jumbotron fluid className="jumbotron text-center mt-5">
+			<Jumbotron fluid className="jumbotron text-center">
 				<Container>
 					<h1>CoopWork</h1>
 				</Container>

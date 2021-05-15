@@ -29,7 +29,7 @@ export const CreateEvent = () => {
 		setAddProposal(proposals);
 	};
 	return (
-		<div className="form mx-auto">
+		<div className="inputs mx-auto">
 			<Jumbotron fluid className="jumbotron text-center">
 				<Container>
 					<h1>CoopWork</h1>

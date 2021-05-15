@@ -1,24 +1,71 @@
-import React from "react";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+import React, { useState } from "react";
+import {
+	Collapse,
+	Navbar,
+	NavbarToggler,
+	Toggle,
+	NavbarBrand,
+	Nav,
+	NavItem,
+	NavLink,
+	UncontrolledDropdown,
+	DropdownToggle,
+	DropdownMenu,
+	DropdownItem,
+	NavbarText
+} from "reactstrap";
+import "../../styles/nav.scss";
 
-export const NewNav = () => {
+const Example = props => {
+	const [isOpen, setIsOpen] = useState(false);
+
+	const toggle = () => setIsOpen(!isOpen);
+
 	return (
-		<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-			<Navbar.Brand href="#home">
-				<i className="far fa-handshake" />
-			</Navbar.Brand>
-			<Navbar.Toggle aria-controls="responsive-navbar-nav" />
-			<Navbar.Collapse id="responsive-navbar-nav">
-				<Nav className="ml-auto">
-					<Nav>
-						<Nav.Link href="/accounts">Home</Nav.Link>
-						<Nav.Link href="/createuser">Edit Users</Nav.Link>
-						<Nav.Link href="/createevent">Edit Events</Nav.Link>
-						<Nav.Link href="/chat">Set Debate</Nav.Link>
+		<div id="header-container">
+			<Navbar color="lightgray" light expand="md">
+				<NavbarBrand>
+					<NavLink to="/">
+						{" "}
+						<i style={{ color: "black" }} className="far fa-handshake" />
+					</NavLink>
+				</NavbarBrand>
+				<NavbarToggler onClick={toggle}>
+					{/* Close mark */}
+					<div id="close-icon" className={isOpen ? "open" : ""}>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					{/* close mark ends */}
+				</NavbarToggler>
+				<Collapse isOpen={isOpen} navbar>
+					<Nav className="ml-auto nav" navbar>
+						<NavItem>
+							<NavLink href="/accounts" onClick={toggle}>
+								Home
+							</NavLink>
+						</NavItem>
+						<NavItem>
+							<NavLink href="/createuser" onClick={toggle}>
+								Edit Users
+							</NavLink>
+						</NavItem>
+						<NavItem>
+							<NavLink href="/createevent" onClick={toggle}>
+								Edit Events
+							</NavLink>
+						</NavItem>
+						<NavItem>
+							<NavLink href="/chat" onClick={toggle}>
+								Set Debate
+							</NavLink>
+						</NavItem>
 					</Nav>
-				</Nav>
-			</Navbar.Collapse>
-		</Navbar>
+				</Collapse>
+			</Navbar>
+		</div>
 	);
 };
+
+export default Example;
