@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link, Redirect } from "react-router-dom";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Alert } from "react-bootstrap";
 import { ModalVote } from "./modalvote";
 import { EventCard } from "./eventcard";
 
@@ -12,9 +12,19 @@ export const VoteButons = () => {
 	const handleShow = () => setShow(true);
 	const [picked, setpicked] = useState("");
 	const [IDpicked, setIDpicked] = useState(null);
+	const [errorM, setErrorM] = useState("");
 	const refreshPage = () => {
 		window.location.reload();
 	};
+	// async function handleVote(PayLoad) {
+	// 	let req = await actions.vote(PayLoad);
+	// 	console.log(req);
+	// 	if (req.response === true) {
+	// 		setErrorM("exito");
+	// 	} else {
+	// 		setErrorM(req.message);
+	// 	}
+	// }
 	return (
 		<>
 			{store.events.map((item, key) => {
@@ -22,6 +32,8 @@ export const VoteButons = () => {
 
 				return (
 					<div className="container mx-auto" key={key}>
+						{store.errorMessage.length > 0 && <Alert variant={"danger"}>{store.errorMessage}</Alert>}
+
 						<EventCard item={item} handleShow={handleShow} picked={setpicked} ID={setIDpicked} i={key} />
 
 						<Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
@@ -40,6 +52,7 @@ export const VoteButons = () => {
 								<Button
 									variant="primary"
 									onClick={() => {
+										// handleVote(PayLoad);
 										actions.vote(PayLoad);
 										handleClose();
 										// refreshPage();

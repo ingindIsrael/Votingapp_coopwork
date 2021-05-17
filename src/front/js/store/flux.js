@@ -4,7 +4,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			token: sessionStorage.getItem("token"),
 			comments: [],
 			events: [],
-			admin: false
+			admin: false,
+			errorMessage: ""
 		},
 		actions: {
 			reminder: () => {
@@ -119,12 +120,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 					body: JSON.stringify(vote)
 				})
-					.then(response => response.json())
+					.then(response => {
+						if (!response.ok) {
+							console.log("*******response en el if", response);
+							setStore({
+								errorMessage:
+									"Our records show that you have already voted in this event, you are only allowed to vote once. If you think there is an error please contact the administrator"
+							});
+							throw new Error(response.statusText);
+						}
+						response.json();
+					})
 					.then(data => {
 						console.log(data);
-						// setStore({ events: store.events.concat(data) });
 					})
-					.catch(error => console.log(error));
+					.catch(error => {
+						console.log("*****este es el caht", error);
+						// setStore({ errorMessage: error });
+					});
 			}
 		}
 	};

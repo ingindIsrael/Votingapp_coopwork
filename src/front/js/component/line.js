@@ -7,10 +7,10 @@ const data = {
 	datasets: [
 		{
 			label: "Revenue Spread",
-			data: [12, 19, 3, 5, 2, 3],
+			data: [12, 19, 30, 57, 69, 73],
 			fill: false,
-			backgroundColor: "rgb(255, 99, 132)",
-			borderColor: "rgba(255, 99, 132, 0.2)"
+			backgroundColor: "rgb(88, 176, 88)",
+			borderColor: "rgba(88, 176, 88, 0.5)"
 		}
 	]
 };

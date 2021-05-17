@@ -33,9 +33,9 @@ const Example = props => {
 				<NavbarToggler onClick={toggle}>
 					{/* Close mark */}
 					<div id="close-icon" className={isOpen ? "open" : ""}>
-						<span></span>
-						<span></span>
-						<span></span>
+						<span />
+						<span />
+						<span />
 					</div>
 					{/* close mark ends */}
 				</NavbarToggler>
@@ -44,6 +44,11 @@ const Example = props => {
 						<NavItem>
 							<NavLink href="/accounts" onClick={toggle}>
 								Home
+							</NavLink>
+						</NavItem>
+						<NavItem>
+							<NavLink href="/" onClick={toggle}>
+								Logout
 							</NavLink>
 						</NavItem>
 						<NavItem>
