@@ -29,6 +29,10 @@ const Example = props => {
 						{" "}
 						<i style={{ color: "black" }} className="far fa-handshake" />
 					</NavLink>
+					<h4 ml-5 pl-5 mr-0 pr-0>
+						{" "}
+						CoopWork
+					</h4>
 				</NavbarBrand>
 				<NavbarToggler onClick={toggle}>
 					{/* Close mark */}

@@ -70,7 +70,6 @@ export const Home = props => {
 						Submit Infomation
 					</Button>
 					<br />
-					<Button className="login-button border border-dark rounded-pill btn-dark">Login with Gmail</Button>
 				</Form>
 			</Container>
 		</div>

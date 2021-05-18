@@ -173,11 +173,9 @@ export const TabNav = () => {
 									obtain a loan for launching new products
 								</p>
 							</div>
-							<Button
-								className="border border-dark rounded-pill btn-dark button"
-								onClick={() => <Chat />}>
+							<Link to="/chat" className="border border-dark rounded-pill btn-dark button">
 								Join Chat
-							</Button>
+							</Link>
 						</Tab.Pane>
 					</Tab.Content>
 				</Col>
