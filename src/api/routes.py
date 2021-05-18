@@ -83,6 +83,10 @@ def vote():
     user_id = get_jwt_identity()
     body = request.get_json()
     single_vote = Vote(proposalID = body["proposalID"], userID = user_id)
+    existVote = Vote.query.filter_by(userID = user_id).first()
+    print("**************existVOTE****************", existVote)
+    if existVote is not None:
+        raise APIException('Our records show that you have already voted in this event, you are only allowed to vote once. If you think there is an error please contact the administrator', status_code=400)
     print("**************VOTE****************", single_vote)
     db.session.add(single_vote)
     db.session.commit()

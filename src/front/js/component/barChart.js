@@ -3,7 +3,7 @@ import { Bar } from "react-chartjs-2";
 import "../../styles/chart.scss";
 
 const data = {
-	labels: ["Rent", "Revenue", "Lights", "Water", "Gas", "Misc"],
+	labels: ["New Equipment", "Retirement", "Savings", "Emergency", "Store", "Misc"],
 	datasets: [
 		{
 			label: "Monthly Budget",

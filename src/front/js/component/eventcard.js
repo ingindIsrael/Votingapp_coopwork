@@ -10,8 +10,8 @@ export const EventCard = ({ item, handleShow, picked, ID, i }) => {
 	console.log(item);
 	const { store, actions } = useContext(Context);
 	return (
-		<Card className="mx-auto" style={{ width: "18rem" }}>
-			<Card.Header>{item.eventNAME}</Card.Header>
+		<Card className="mx-auto" bg="dark" style={{ width: "18rem" }}>
+			<Card.Header text="muted">{item.eventNAME}</Card.Header>
 			<PieChart eventIndex={i} />
 
 			<ListGroup className="list-group-flush">

@@ -66,6 +66,7 @@ export const Home = props => {
 						onClick={Handlerlogin}>
 						Submit Infomation
 					</Button>
+					<br />
 				</Form>
 			</div>
 		</div>

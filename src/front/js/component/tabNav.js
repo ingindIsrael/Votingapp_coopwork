@@ -168,12 +168,14 @@ export const TabNav = () => {
 							</p>
 
 							<div className="container">
-								<p>
+								<p style={{ fontSize: 15 }}>
 									Be apart of our workplace democracy and join the debate about whether or not to
 									obtain a loan for launching new products
 								</p>
 							</div>
-							<Button className="border border-dark rounded-pill btn-dark button">Join Chat</Button>
+							<Link to="/chat" className="border border-dark rounded-pill btn-dark button">
+								Join Chat
+							</Link>
 						</Tab.Pane>
 					</Tab.Content>
 				</Col>
