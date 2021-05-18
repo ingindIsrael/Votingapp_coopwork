@@ -29,14 +29,12 @@ export const CreateEvent = () => {
 		setAddProposal(proposals);
 	};
 	return (
-		<div className="inputs mx-auto">
-			<Jumbotron fluid className="jumbotron text-center">
-				<Container>
-					<h1>CoopWork</h1>
-				</Container>
-			</Jumbotron>
-			<Container>
-				<Form onSubmit={e => handlerSubmit(e)}>
+		<div className="container-fluid mt-5 text-center">
+			<div className="row">
+				<h1 className="mx-auto mb-5">CoopWork</h1>
+			</div>
+			<div className="row">
+				<Form className="col-md-4 col-10 mx-auto" onSubmit={e => handlerSubmit(e)}>
 					<Form.Group controlId="formBasicName">
 						<Form.Control
 							className="input border border-dark"
@@ -79,7 +77,7 @@ export const CreateEvent = () => {
 						Create Event
 					</Button>
 				</Form>
-			</Container>
+			</div>
 		</div>
 	);
 };

@@ -23,11 +23,11 @@ const Example = props => {
 
 	return (
 		<div id="header-container">
-			<Navbar color="lightgray" light expand="md">
+			<Navbar color="dark" light expand="md">
 				<NavbarBrand>
 					<NavLink to="/">
 						{" "}
-						<i style={{ color: "black" }} className="far fa-handshake" />
+						<i className="far fa-handshake text-light" />
 					</NavLink>
 				</NavbarBrand>
 				<NavbarToggler onClick={toggle}>
@@ -42,22 +42,22 @@ const Example = props => {
 				<Collapse isOpen={isOpen} navbar>
 					<Nav className="ml-auto nav" navbar>
 						<NavItem>
-							<NavLink href="/accounts" onClick={toggle}>
+							<NavLink className="text-light" href="/accounts" onClick={toggle}>
 								Home
 							</NavLink>
 						</NavItem>
 						<NavItem>
-							<NavLink href="/createuser" onClick={toggle}>
+							<NavLink className="text-light" href="/createuser" onClick={toggle}>
 								Edit Users
 							</NavLink>
 						</NavItem>
 						<NavItem>
-							<NavLink href="/createevent" onClick={toggle}>
+							<NavLink className="text-light" href="/createevent" onClick={toggle}>
 								Edit Events
 							</NavLink>
 						</NavItem>
 						<NavItem>
-							<NavLink href="/chat" onClick={toggle}>
+							<NavLink className="text-light" href="/chat" onClick={toggle}>
 								Set Debate
 							</NavLink>
 						</NavItem>

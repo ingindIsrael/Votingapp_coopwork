@@ -36,19 +36,16 @@ export const Home = props => {
 	};
 	console.log("este es el admin ", sessionStorage.getItem("admin"));
 	return (
-		<div className="inputs mx-auto">
+		<div className="container-fluid mt-5 text-center">
 			{props.login ? <Redirect to="/accounts" /> : ""}
-			<Jumbotron fluid className="jumbotron text-center">
-				<Container>
-					<h1>CoopWork</h1>
-				</Container>
-			</Jumbotron>
-
-			<Container>
-				<Form>
+			<div className="row">
+				<h1 className="mx-auto mb-5">CoopWork</h1>
+			</div>
+			<div className="row">
+				<Form className="col-md-4 col-10 mx-auto">
 					<Form.Group controlId="formBasicEmail">
 						<Form.Control
-							className="input border border-dark"
+							className="input col-12 border border-dark"
 							type="email"
 							placeholder="Worker Name"
 							onChange={e => setEmail(e.target.value)}
@@ -69,10 +66,8 @@ export const Home = props => {
 						onClick={Handlerlogin}>
 						Submit Infomation
 					</Button>
-					<br />
-					<Button className="login-button border border-dark rounded-pill btn-dark">Login with Gmail</Button>
 				</Form>
-			</Container>
+			</div>
 		</div>
 	);
 };
