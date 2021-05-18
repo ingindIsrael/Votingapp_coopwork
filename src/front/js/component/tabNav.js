@@ -8,6 +8,7 @@ import TabPane from "react-bootstrap/TabPane";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 import { Chat } from "./chat";
 import "../../styles/tabNav.scss";
 import BillsChart from "./billsChart";
@@ -43,8 +44,10 @@ export const TabNav = () => {
 									setDebateTab(false);
 								}}>
 								Accounts
+								<i className="fas fa-dollar-sign ml-3" />
 							</Nav.Link>
 						</Nav.Item>
+
 						<Nav.Item>
 							<Nav.Link
 								className="tab rounded-0"
@@ -56,7 +59,7 @@ export const TabNav = () => {
 									setAccountsTab(false);
 									setDebateTab(false);
 								}}>
-								Bills
+								Bills <i className="fas fa-file-invoice-dollar ml-3" />
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
@@ -70,7 +73,7 @@ export const TabNav = () => {
 									setAccountsTab(false);
 									setDebateTab(false);
 								}}>
-								Budgets
+								Budgets <i className="fas fa-money-check ml-3" />
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
@@ -84,12 +87,13 @@ export const TabNav = () => {
 									setAccountsTab(false);
 									setDebateTab(false);
 								}}>
-								Votes
+								Votes <i className="fas fa-address-card ml-3" />
+								{/* <i class="fas fa-address-card"></i> */}
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
 							<Nav.Link
-								className="tab rounded-0"
+								className="tab mb-4 rounded-0 "
 								eventKey="fifth"
 								onClick={() => {
 									setVoteTab(false);
@@ -98,7 +102,7 @@ export const TabNav = () => {
 									setAccountsTab(false);
 									setDebateTab(true);
 								}}>
-								Debate
+								Debate <i className="fas fa-comments ml-3" />
 							</Nav.Link>
 						</Nav.Item>
 					</Nav>
@@ -107,9 +111,6 @@ export const TabNav = () => {
 					<Tab.Content>
 						<Tab.Pane eventKey="first">
 							<>
-								<p>
-									<i className="fas fa-dollar-sign" />
-								</p>
 								{accountsTab ? (
 									<>
 										<LineChart />{" "}
@@ -121,9 +122,6 @@ export const TabNav = () => {
 						</Tab.Pane>
 						<Tab.Pane eventKey="second">
 							<>
-								<p>
-									<i className="fas fa-file-invoice-dollar" />
-								</p>
 								{billsTab ? (
 									<>
 										<BillsChart />{" "}
@@ -134,11 +132,7 @@ export const TabNav = () => {
 							</>
 						</Tab.Pane>
 						<Tab.Pane eventKey="third">
-							<>
-								<p>
-									<i className="fas fa-money-check" />
-								</p>
-							</>
+							<></>
 							{budgetsTab ? (
 								<>
 									<VerticalBar />{" "}
@@ -163,17 +157,13 @@ export const TabNav = () => {
 							)}
 						</Tab.Pane>
 						<Tab.Pane eventKey="fifth">
-							<p>
-								<i className="fas fa-comments" />
-							</p>
-
 							<div className="container">
 								<p style={{ fontSize: 15 }}>
 									Be apart of our workplace democracy and join the debate about whether or not to
 									obtain a loan for launching new products
 								</p>
 							</div>
-							<Link to="/chat" className="border border-dark rounded-pill btn-dark button">
+							<Link to="/chat" className="p-2 m-1 border border-dark rounded-pill btn-dark button">
 								Join Chat
 							</Link>
 						</Tab.Pane>

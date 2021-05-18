@@ -34,7 +34,9 @@ export const Footer = () => {
 	}, []);
 
 	return (
-		<footer className="footer mt-auto py-3 text-center">
+		<footer
+			style={{ fontSize: "0.7em" }}
+			className="footer mt-auto mb-0 py-3 text-center border border-top border-bottom-0 border-left-0 border-right-0 border-dark">
 			{quote[0]} - <strong>{quote[1]}</strong>
 		</footer>
 	);

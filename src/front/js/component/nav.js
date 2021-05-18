@@ -28,7 +28,9 @@ const Example = props => {
 					<NavLink to="/">
 						{" "}
 						<i className="far fa-handshake text-light" />
-						<h4 className="ml-2 text-light">Coopwork</h4>
+						<h4 style={{ display: "inline" }} className="ml-2 text-light">
+							CoopWork
+						</h4>
 					</NavLink>
 				</NavbarBrand>
 				<NavbarToggler onClick={toggle}>
