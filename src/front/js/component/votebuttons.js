@@ -31,7 +31,7 @@ export const VoteButons = () => {
 				const PayLoad = { eventID: item.id, proposalID: IDpicked };
 
 				return (
-					<div className="container mx-auto" key={key}>
+					<div className="container mx-auto p-2" key={key}>
 						{store.errorMessage.length > 0 && <Alert variant={"danger"}>{store.errorMessage}</Alert>}
 
 						<EventCard item={item} handleShow={handleShow} picked={setpicked} ID={setIDpicked} i={key} />

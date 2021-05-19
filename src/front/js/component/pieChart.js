@@ -50,9 +50,9 @@ export const PieChart = props => {
 		data.datasets[0].borderColor.push(colors.Bcolor[index]);
 	});
 	return (
-		<>
+		<div className="pie">
 			<Pie data={data} />
-		</>
+		</div>
 	);
 };
 PieChart.propTypes = {

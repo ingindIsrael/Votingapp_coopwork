@@ -14,7 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "GET",
 					headers: {
 						"Content-Type": "application/json",
-						Authorization: `Bearer ${store.token}`
+						Authorization: `Bearer ${sessionStorage.getItem("token")}`
 					}
 				})
 					.then(response => response.json())
@@ -31,7 +31,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
-						Authorization: `Bearer ${store.token}`
+						Authorization: `Bearer ${sessionStorage.getItem("token")}`
 					},
 					body: JSON.stringify(commentTXT)
 				})
@@ -48,7 +48,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "GET",
 					headers: {
 						"Content-Type": "application/json",
-						Authorization: `Bearer ${store.token}`
+						Authorization: `Bearer ${sessionStorage.getItem("token")}`
 					}
 				})
 					.then(response => response.json())
@@ -64,7 +64,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
-						Authorization: `Bearer ${store.token}`
+						Authorization: `Bearer ${sessionStorage.getItem("token")}`
 					},
 					body: JSON.stringify(newUser)
 				})
@@ -82,7 +82,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
-						Authorization: `Bearer ${store.token}`
+						Authorization: `Bearer ${sessionStorage.getItem("token")}`
 					},
 					body: JSON.stringify(newEvent)
 				})
@@ -99,7 +99,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "GET",
 					headers: {
 						"Content-Type": "application/json",
-						Authorization: `Bearer ${store.token}`
+						Authorization: `Bearer ${sessionStorage.getItem("token")}`
 					}
 				})
 					.then(response => response.json())
@@ -112,11 +112,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			vote: vote => {
 				const store = getStore();
 				console.log(store);
+				console.log("VOTES", vote);
 				fetch(`${process.env.BACKEND_URL}/api/vote`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
-						Authorization: `Bearer ${store.token}`
+						Authorization: `Bearer ${sessionStorage.getItem("token")}`
 					},
 					body: JSON.stringify(vote)
 				})

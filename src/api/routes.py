@@ -15,22 +15,20 @@ api = Blueprint('api', __name__)
 def get_All_Events():
     events = Event.query.filter_by(active = True) 
     event_list = []
-    proposal_list = []
     def vote_injection(p):
         proposal = p.serialize()
         votes = Vote.query.filter_by(proposalID = p.id)
         if votes is not None:
             votes = list(map(lambda x: x.serialize(), votes))
             proposal["votes"] = votes
-            proposal_list.append(proposal)
+            return proposal
 
     def make_list(e):
         event = e.serialize()
         proposals = Proposal.query.filter_by(eventID = e.id) 
         proposals = list(map(lambda x: vote_injection(x), proposals))
-        proposals = proposal_list
         event["proposal"] = proposals
-        event_list.append(event) 
+        event_list.append(event)
     all_events = list(map( lambda x: make_list(x), events))
     return event_list
 

@@ -157,7 +157,7 @@ export const TabNav = () => {
 							)}
 						</Tab.Pane>
 						<Tab.Pane eventKey="fifth">
-							<div className="container m-auto">
+							<div className="container mt-5">
 								<p style={{ fontSize: 15 }}>
 									Be apart of our workplace democracy and join the debate about whether or not to
 									obtain a loan for launching new products
