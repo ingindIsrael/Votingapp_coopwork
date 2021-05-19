@@ -31,7 +31,7 @@ const data = {
 
 const BillsChart = () => (
 	<>
-		<div className="pie">
+		<div className="pie mt-5">
 			<Pie data={data} />
 		</div>
 	</>

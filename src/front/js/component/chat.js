@@ -3,7 +3,10 @@ import "../../styles/chat.scss";
 import { ChatWindow } from "./chatWindow";
 
 export const Chat = () => (
-	<div className="container" fluid>
-		<ChatWindow />
-	</div>
+	<>
+		<h1 className="mt-5 text-center">Debate</h1>
+		<div className="mt-5" fluid>
+			<ChatWindow />
+		</div>
+	</>
 );

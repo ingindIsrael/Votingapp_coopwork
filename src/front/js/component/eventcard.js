@@ -10,7 +10,7 @@ export const EventCard = ({ item, handleShow, picked, ID, i }) => {
 	console.log(item);
 	const { store, actions } = useContext(Context);
 	return (
-		<Card className="mx-auto" bg="dark" style={{ width: "18rem" }}>
+		<Card className="p-0" bg="light">
 			<Card.Header text="muted">{item.eventNAME}</Card.Header>
 			<PieChart eventIndex={i} />
 
@@ -18,7 +18,8 @@ export const EventCard = ({ item, handleShow, picked, ID, i }) => {
 				{item.proposal.map((proposal, index) => (
 					<ListGroupItem key={index}>
 						<Button
-							variant="primary"
+							className="rounded-pill"
+							variant="dark"
 							onClick={() => {
 								handleShow();
 								picked(proposal.proposalNAME);
@@ -31,7 +32,9 @@ export const EventCard = ({ item, handleShow, picked, ID, i }) => {
 			</ListGroup>
 			<Card.Footer>
 				<Card.Subtitle className="mb-2 text-muted">Send bulk reminder to vote</Card.Subtitle>
-				<Button onClick={() => actions.reminder()}>Send</Button>
+				<Button className="dark rounded-pill" onClick={() => actions.reminder()}>
+					Send
+				</Button>
 			</Card.Footer>
 		</Card>
 	);

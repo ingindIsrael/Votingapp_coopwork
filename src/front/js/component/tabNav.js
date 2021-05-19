@@ -143,7 +143,7 @@ export const TabNav = () => {
 						</Tab.Pane>
 						<Tab.Pane eventKey="fourth">
 							<>
-								<div id="example-collapse-text" className="small-container">
+								<div id="example-collapse-text" className="pie">
 									The chart below displays the results of our workplace democracy in real time,
 									allowing you to always be to up to date.
 								</div>
@@ -157,15 +157,16 @@ export const TabNav = () => {
 							)}
 						</Tab.Pane>
 						<Tab.Pane eventKey="fifth">
-							<div className="container">
+							<div className="container m-auto">
 								<p style={{ fontSize: 15 }}>
 									Be apart of our workplace democracy and join the debate about whether or not to
 									obtain a loan for launching new products
 								</p>
+
+								<Link to="/chat" className="p-1 m-1 border border-dark rounded-pill btn-dark button">
+									Join
+								</Link>
 							</div>
-							<Link to="/chat" className="p-2 m-1 border border-dark rounded-pill btn-dark button">
-								Join Chat
-							</Link>
 						</Tab.Pane>
 					</Tab.Content>
 				</Col>

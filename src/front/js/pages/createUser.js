@@ -101,7 +101,7 @@ export const CreateUser = () => {
 						Create User
 					</Button>
 					<br />
-					<Button className="login-button border border-dark rounded-pill btn-dark">Delete User</Button>
+					<Button className="login-button border border-dark rounded-pill btn-dark mb-5">Delete User</Button>
 				</Form>
 			</div>
 		</div>
