@@ -68,9 +68,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 					body: JSON.stringify(newUser)
 				})
-					.then(response => response.json())
+					.then(response => {
+						// alert("User created");
+						response.json();
+					})
 					.then(data => {
 						console.log(data);
+						// alert("User created");
 						// setStore({ comments: store.comments.concat(data) });
 					})
 					.catch(error => console.log(error));

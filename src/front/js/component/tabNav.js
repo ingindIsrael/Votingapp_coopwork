@@ -21,8 +21,8 @@ import Fade from "react-bootstrap/Fade";
 import { VoteButons } from "./votebuttons";
 
 export const TabNav = () => {
-	const [voteTab, setVoteTab] = useState(false);
-	const [accountsTab, setAccountsTab] = useState(true);
+	const [voteTab, setVoteTab] = useState(true);
+	const [accountsTab, setAccountsTab] = useState(false);
 	const [billsTab, setBillsTab] = useState(false);
 	const [budgetsTab, setBudgetsTab] = useState(false);
 	const [debateTab, setDebateTab] = useState(false);
@@ -37,14 +37,13 @@ export const TabNav = () => {
 								className="tab rounded-0"
 								eventKey="first"
 								onClick={() => {
-									setVoteTab(false);
+									setVoteTab(true);
 									setBillsTab(false);
 									setBudgetsTab(false);
-									setAccountsTab(true);
+									setAccountsTab(false);
 									setDebateTab(false);
 								}}>
-								Accounts
-								<i className="fas fa-dollar-sign ml-3" />
+								Votes <i className="fas fa-address-card ml-3" />
 							</Nav.Link>
 						</Nav.Item>
 
@@ -81,14 +80,14 @@ export const TabNav = () => {
 								className="tab rounded-0"
 								eventKey="fourth"
 								onClick={() => {
-									setVoteTab(true);
+									setVoteTab(false);
 									setBillsTab(false);
 									setBudgetsTab(false);
-									setAccountsTab(false);
+									setAccountsTab(true);
 									setDebateTab(false);
 								}}>
-								Votes <i className="fas fa-address-card ml-3" />
-								{/* <i class="fas fa-address-card"></i> */}
+								Accounts
+								<i className="fas fa-dollar-sign ml-3" />
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
@@ -111,9 +110,14 @@ export const TabNav = () => {
 					<Tab.Content>
 						<Tab.Pane eventKey="first">
 							<>
-								{accountsTab ? (
+								<div id="example-collapse-text" className="pie">
+									The chart below displays the results of our workplace democracy in real time,
+									allowing you to always be to up to date.
+								</div>
+
+								{voteTab ? (
 									<>
-										<LineChart />{" "}
+										<VoteButons />{" "}
 									</>
 								) : (
 									""
@@ -122,6 +126,7 @@ export const TabNav = () => {
 						</Tab.Pane>
 						<Tab.Pane eventKey="second">
 							<>
+								<p className="mt-3mb-0 pb-0">Expenses in thousands of dollars</p>
 								{billsTab ? (
 									<>
 										<BillsChart />{" "}
@@ -142,15 +147,9 @@ export const TabNav = () => {
 							)}
 						</Tab.Pane>
 						<Tab.Pane eventKey="fourth">
-							<>
-								<div id="example-collapse-text" className="pie">
-									The chart below displays the results of our workplace democracy in real time,
-									allowing you to always be to up to date.
-								</div>
-							</>
-							{voteTab ? (
+							{accountsTab ? (
 								<>
-									<VoteButons />{" "}
+									<LineChart />{" "}
 								</>
 							) : (
 								""
@@ -163,7 +162,10 @@ export const TabNav = () => {
 									obtain a loan for launching new products
 								</p>
 
-								<Link to="/chat" className="p-1 m-1 border border-dark rounded-pill btn-dark button">
+								<Link
+									style={{ textDecoration: "none" }}
+									to="/chat"
+									className="p-1 m-1 border border-dark rounded-pill btn-dark button">
 									Join
 								</Link>
 							</div>

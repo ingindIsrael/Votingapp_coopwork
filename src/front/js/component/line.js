@@ -6,7 +6,7 @@ const data = {
 	labels: ["Dec", "Jan", "Feb", "Mar", "April", "May"],
 	datasets: [
 		{
-			label: "Revenue Spread",
+			label: "Revenue Spread in thousands of dollars",
 			data: [12, 19, 30, 57, 69, 73],
 			fill: false,
 			backgroundColor: "rgb(88, 176, 88)",

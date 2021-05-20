@@ -1,9 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
-import Jumbotron from "react-bootstrap/Jumbotron";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import { Jumbotron, Modal, Container, Form, Button } from "react-bootstrap";
 import "../../styles/home.scss";
 
 export const CreateEvent = () => {
@@ -28,6 +25,27 @@ export const CreateEvent = () => {
 		proposals[index] = value;
 		setAddProposal(proposals);
 	};
+	const [showAlert, setShowAlert] = useState(false);
+
+	if (showAlert) {
+		return (
+			<Modal.Dialog>
+				<Modal.Header closeButton>
+					<Modal.Title>New event!</Modal.Title>
+				</Modal.Header>
+
+				<Modal.Body>
+					<p>A voting event has been created.</p>
+				</Modal.Body>
+
+				<Modal.Footer>
+					<Button href="/accounts" variant="dark">
+						Go to home
+					</Button>
+				</Modal.Footer>
+			</Modal.Dialog>
+		);
+	}
 	return (
 		<div className="container-fluid mt-5 text-center">
 			<div className="row">
@@ -69,11 +87,22 @@ export const CreateEvent = () => {
 					})}
 					<Button
 						className="mb-2 border border-dark login-button rounded-pill btn-dark"
-						onClick={() => setAddProposal([...addProposal, ""])}>
+						onClick={() => {
+							setAddProposal([...addProposal, ""]);
+							setShowAlert(true);
+						}}>
 						Add Proposal
 					</Button>
 
-					<Button className="mb-2 border border-dark login-button rounded-pill btn-dark" type="submit">
+					<Button
+						className="mb-2 border border-dark login-button rounded-pill btn-dark"
+						type="submit"
+						// onClick={() => {
+						// 	handlerSubmit();
+						// 	setShowAlert(true);
+						// }}>
+						// {" "}
+					>
 						Create Event
 					</Button>
 				</Form>

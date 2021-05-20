@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link, Redirect } from "react-router-dom";
 import { Modal, Button, Alert } from "react-bootstrap";
@@ -15,6 +15,11 @@ export const VoteButons = () => {
 	const [errorM, setErrorM] = useState("");
 	const refreshPage = () => {
 		window.location.reload();
+	};
+	const refreshHardler = () => {
+		setTimeout(() => {
+			refreshPage();
+		}, 5000);
 	};
 	// async function handleVote(PayLoad) {
 	// 	let req = await actions.vote(PayLoad);
@@ -42,22 +47,22 @@ export const VoteButons = () => {
 							</Modal.Header>
 							<Modal.Body>
 								Are you completely sure you want to vote for? <strong>{picked}</strong> If so, click on
-								<strong> Yes</strong> and your vote will be final. Take into consideration that after
-								voting you cannot alter your decision
+								<strong> Ok</strong> and your vote will be final. Take into consideration that after
+								voting you cannot alter your decision.
 							</Modal.Body>
 							<Modal.Footer>
-								<Button variant="secondary" onClick={handleClose}>
+								<Button variant="dark" onClick={handleClose}>
 									Close
 								</Button>
 								<Button
-									variant="primary"
+									variant="dark"
 									onClick={() => {
 										// handleVote(PayLoad);
 										actions.vote(PayLoad);
 										handleClose();
-										// refreshPage();
+										refreshHardler();
 									}}>
-									Yes
+									ok
 								</Button>
 							</Modal.Footer>
 						</Modal>

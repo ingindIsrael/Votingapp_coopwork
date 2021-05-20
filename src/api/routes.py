@@ -7,7 +7,7 @@ from api.models import db, User, Vote, Comment, Event, Proposal
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, JWTManager, get_jwt_identity, jwt_required
 
-import os
+import os 
 from twilio.rest import Client
 
 api = Blueprint('api', __name__)

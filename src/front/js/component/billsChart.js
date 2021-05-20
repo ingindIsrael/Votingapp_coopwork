@@ -3,11 +3,11 @@ import { Pie } from "react-chartjs-2";
 import "../../styles/pieChart.scss";
 
 const data = {
-	labels: ["Rent", "Revenue", "Lights", "Water", "Gas", "Misc"],
+	labels: ["Rent", "Coffee", "Lights", "Water", "Gas", "Misc"],
 	datasets: [
 		{
-			label: "Monthly Bills",
-			data: [12, 19, 3, 5, 2, 3],
+			label: "Monthly Bills in thousands of dollars",
+			data: [1.2, 1.9, 0.3, 0.5, 0.2, 0.3],
 			backgroundColor: [
 				"rgba(255, 99, 132, 0.7)",
 				"rgba(54, 162, 235, 0.7)",
@@ -24,6 +24,7 @@ const data = {
 				"rgba(153, 102, 255, 1)",
 				"rgba(255, 159, 64, 1)"
 			],
+
 			borderWidth: 1
 		}
 	]

@@ -6,7 +6,7 @@ const data = {
 	labels: ["New Equipment", "Retirement", "Savings", "Emergency", "Store", "Misc"],
 	datasets: [
 		{
-			label: "Monthly Budget",
+			label: "Monthly Budget in thousands of dollars",
 			data: [12, 19, 3, 5, 2, 3],
 			backgroundColor: [
 				"rgba(255, 99, 132, 0.5)",

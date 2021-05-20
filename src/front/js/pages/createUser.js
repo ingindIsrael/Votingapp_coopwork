@@ -1,10 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import Jumbotron from "react-bootstrap/Jumbotron";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Check from "react-bootstrap/FormCheck";
+import { Alert, Modal, Container, Form, Button, Check } from "react-bootstrap";
 import "../../styles/home.scss";
 
 export const CreateUser = () => {
@@ -17,6 +14,28 @@ export const CreateUser = () => {
 		admin: false,
 		phone: ""
 	});
+
+	const [showAlert, setShowAlert] = useState(false);
+
+	if (showAlert) {
+		return (
+			<Modal.Dialog>
+				<Modal.Header closeButton>
+					<Modal.Title>New user!</Modal.Title>
+				</Modal.Header>
+
+				<Modal.Body>
+					<p>A user has been created.</p>
+				</Modal.Body>
+
+				<Modal.Footer>
+					<Button href="/accounts" variant="dark">
+						Go to home
+					</Button>
+				</Modal.Footer>
+			</Modal.Dialog>
+		);
+	}
 	return (
 		<div className="container-fluid mt-5 text-center">
 			<div className="row">
@@ -97,7 +116,10 @@ export const CreateUser = () => {
 					</Form>
 					<Button
 						className="mb-2 border border-dark login-button rounded-pill btn-dark"
-						onClick={() => actions.createuser(newUser)}>
+						onClick={() => {
+							actions.createuser(newUser);
+							setShowAlert(true);
+						}}>
 						Create User
 					</Button>
 					<br />
