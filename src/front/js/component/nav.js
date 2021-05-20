@@ -45,27 +45,27 @@ const Example = props => {
 				<Collapse isOpen={isOpen} navbar>
 					<Nav className="ml-auto nav" navbar>
 						<NavItem>
-							<NavLink className="text-light" href="/accounts" onClick={toggle}>
+							<NavLink className="NavLink text-light" href="/accounts" onClick={toggle}>
 								Home
 							</NavLink>
 						</NavItem>
 						<NavItem>
-							<NavLink className="text-light" href="/" onClick={toggle}>
+							<NavLink className="NavLink text-light" href="/" onClick={toggle}>
 								Logout
 							</NavLink>
 						</NavItem>
 						<NavItem>
-							<NavLink className="text-light" href="/createuser" onClick={toggle}>
+							<NavLink className="NavLink text-light" href="/createuser" onClick={toggle}>
 								Edit Users
 							</NavLink>
 						</NavItem>
 						<NavItem>
-							<NavLink className="text-light" href="/createevent" onClick={toggle}>
+							<NavLink className="NavLink text-light" href="/createevent" onClick={toggle}>
 								Edit Events
 							</NavLink>
 						</NavItem>
 						<NavItem>
-							<NavLink className="text-light" href="/chat" onClick={toggle}>
+							<NavLink className="NavLink text-light" href="/chat" onClick={toggle}>
 								Set Debate
 							</NavLink>
 						</NavItem>
