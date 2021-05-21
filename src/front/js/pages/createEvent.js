@@ -52,7 +52,12 @@ export const CreateEvent = () => {
 				<h1 className="mx-auto mb-5">CoopWork</h1>
 			</div>
 			<div className="row">
-				<Form className="col-md-4 col-10 mx-auto" onSubmit={e => handlerSubmit(e)}>
+				<Form
+					className="col-md-4 col-10 mx-auto"
+					onSubmit={e => {
+						handlerSubmit(e);
+						setShowAlert(true);
+					}}>
 					<Form.Group controlId="formBasicName">
 						<Form.Control
 							className="input border border-dark"
